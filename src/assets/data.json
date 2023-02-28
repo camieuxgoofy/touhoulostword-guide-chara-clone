@@ -1,0 +1,17 @@
+[
+	{
+		"id": 1,
+		"name":"Alice Margatroid",
+		"path": "images/character/Alice-Margatroid.png"
+	},
+	{
+		"id": 2,
+		"name":"Aya Shamimaru",
+		"path": "images/character/aya1.png"
+	},
+	{
+		"id": 3,
+		"name":"Chen",
+		"path": "images/character/chen (1).png"
+	}
+]
