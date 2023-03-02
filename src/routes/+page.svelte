@@ -3,34 +3,26 @@
 	import '@splidejs/svelte-splide/css';
 	import '@splidejs/svelte-splide/css/core';
 
-	const options = {
-		rewind: true,
-		perPage: 2,
-		gap: '1rem',
-		height: '15rem',
-		breakpoints: {
-			1000: {
-				perPage: 1
-			}
-		}
-	};
+	import data from '../assets/data.json';
 
-	import aData from '../assets/data.json';
-
-	let index = 0;
-	const next = () => {
-		index++;
-		if (index === aData.length) {
-			index = 0;
-		}
-	};
-	const prev = () => {
-		index--;
-		if (index === -1) {
-			index = aData.length - 1;
-		}
-	};
+	/* Arrow */
+	// let index = 0;
+	// const next = () => {
+	// 	index++;
+	// 	if (index === aData.length) {
+	// 		index = 0;
+	// 	}
+	// };
+	// const prev = () => {
+	// 	index--;
+	// 	if (index === -1) {
+	// 		index = aData.length - 1;
+	// 	}
+	// };
 </script>
+<svelte:head>
+	<title>TLCG</title>
+</svelte:head>
 
 <section class="max-w-screen-xl mx-auto h-[100vh]">
 	<div
@@ -45,29 +37,22 @@
 			{/each} -->
 			<div>
 				<Splide
-					{options}
-					on:mounted={(e) => console.log(e.detail.splide.length)}
-					on:move={(e) => console.log('move to', e.detail.index)}
-					aria-labelledby="basic-example-heading"
-					class="custom-class"
-				>
-					<SplideSlide>
-						{#each [aData[index]] as data (data.id)}
-							<img
-								class="mx-auto object-contain active:scale-105 transition-all"
-								src={data.path}
-								alt={data.name}
-							/>
-						{/each}
-					</SplideSlide>
+					options={{
+						type: 'loop',
+						rewind: false,
+						pagination: false,
+						lazyLoad: 'nearby',
+					}}
+					>
+					{#each data as image}
+						<SplideSlide>
+							<img src={image.path} alt={image.name} />
+						</SplideSlide>
+					{/each}
 				</Splide>
 			</div>
-			<div class="splide__arrows">
-				<button class="splide__arrow splide__arrow--prev">Prev</button>
-				<button class="splide__arrow splide__arrow--next">Next</button>
-			</div>
-			<button on:click={prev} class="prev left-0">&#10094;</button>
-			<button on:click={next} class="next right-0">&#10095;</button>
+			<!-- <button on:click={prev} class="prev left-0">&#10094;</button>
+			<button on:click={next} class="next right-0">&#10095;</button> -->
 		</div>
 	</div>
 </section>
