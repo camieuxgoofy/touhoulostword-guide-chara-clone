@@ -1,11 +1,12 @@
-import adapter from '@sveltejs/adapter-auto';
+// import adapter from '@sveltejs/adapter-auto';
+import adapterVercel from '@sveltejs/adapter-vercel';
 import vitePreprocess from 'svelte-preprocess';
 
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	kit: {
-		adapter: adapter()
+		adapter: adapterVercel()
 	},
 	preprocess: vitePreprocess()
 };
